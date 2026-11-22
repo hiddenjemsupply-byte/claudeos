@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Canopy Miner</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: sticky ledger strip on top, the tree as one big stepped photo crop on the left, worker ledger down the right. Paper and ink only; all colour lives inside the tree. */
+:root{
+  --paper:#F2F1EC; --paper-shade:#E4E2D9; --paper-fold:#D6D3C8;
+  --ink:#151515; --ink-soft:#2A2A28; --graphite:#5F5E59; --pencil:#9A988F;
+  --font:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --earth:#6A4B33;
+  --fs-caption:11px; --step:24px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.4 var(--font);-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.2;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px}
+
+.cap{font-size:var(--fs-caption);font-weight:500;line-height:1.12;letter-spacing:-.01em;color:var(--ink-soft)}
+.label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ledger strip */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--ink);
+  display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px;padding-block:14px 10px}
+.purse{display:flex;align-items:flex-end;gap:10px;min-width:0}
+.count{font-weight:800;font-size:clamp(46px,9vw,100px);line-height:.86;letter-spacing:-.045em;filter:url(#ink-soft)}
+.unit{padding-bottom:6px}
+.unit b{display:block;font-size:20px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.rates{display:flex;gap:18px;flex-wrap:wrap;padding-bottom:6px}
+.rates div{display:flex;flex-direction:column;gap:2px}
+.rates b{font-size:20px;font-weight:700;letter-spacing:-.03em}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:40px;padding-top:24px}
+@media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr);gap:32px}}
+
+/* stage */
+.stage{min-width:0;display:flex;flex-direction:column;gap:16px}
+.biome{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.biome-word{margin:0;font-weight:800;font-size:clamp(52px,8.4vw,108px);line-height:.86;letter-spacing:-.045em;text-transform:lowercase;filter:url(#ink-bleed);text-wrap:balance}
+.biome-word.fresh{animation:stamp .6s ease-out}
+@keyframes stamp{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+.biome .cap{max-width:22ch;padding-bottom:6px}
+
+.tree-wrap{position:relative;width:100%;max-width:560px;margin-top:-28px}
+.tree{display:block;width:100%;aspect-ratio:5/6;border:0;padding:0;margin:0;cursor:pointer;background:var(--paper-shade);
+  touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
+  clip-path:polygon(calc(var(--step)*2) 0,100% 0,100% calc(100% - var(--step)*2),calc(100% - var(--step)) calc(100% - var(--step)*2),calc(100% - var(--step)) 100%,0 100%,0 var(--step),calc(var(--step)*2) var(--step));
+  transition:transform .08s}
+.tree:active{transform:scale(.985)}
+.tree canvas{display:block;width:100%;height:100%;filter:saturate(.72) contrast(.92) sepia(.12)}
+.tree:focus-visible{outline:none}
+.tree:focus-visible canvas{outline:3px solid var(--ink);outline-offset:-8px}
+.tree.bump{animation:bump .14s}
+@keyframes bump{50%{transform:scale(.975) rotate(-.4deg)}}
+.plate{position:absolute;left:0;bottom:var(--step);background:var(--paper);padding:8px;max-width:24ch;pointer-events:none}
+.fx{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.float{position:absolute;font-weight:800;font-size:24px;letter-spacing:-.03em;color:var(--ink);white-space:nowrap;animation:rise .9s ease-out forwards;transform:translate(-50%,-50%)}
+@keyframes rise{to{opacity:0;transform:translate(-50%,-150%)}}
+.chip{position:absolute;width:7px;height:7px;animation:fall .8s ease-in forwards}
+@keyframes fall{to{opacity:0;transform:translate(var(--dx),70px) rotate(200deg)}}
+
+.season{max-width:560px;display:flex;flex-direction:column;gap:6px}
+.season-row{display:flex;justify-content:space-between;gap:12px}
+.bar{height:6px;background:var(--paper-fold)}
+.bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .2s}
+
+/* replant */
+.replant{max-width:560px;border-top:1px solid var(--ink);padding-top:14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:end}
+.replant h2{margin:0 0 6px;font-size:32px;font-weight:700;line-height:1;letter-spacing:-.03em}
+.replant p{margin:0;max-width:44ch}
+.replant .stats{display:flex;gap:20px;margin-top:10px}
+.replant .stats b{display:block;font-size:20px;font-weight:700;letter-spacing:-.03em}
+.btn{font:600 13px/1 var(--font);letter-spacing:.02em;border:0;cursor:pointer;background:var(--ink);color:var(--paper);padding:14px 18px 14px 22px;touch-action:manipulation;
+  clip-path:polygon(8px 0,100% 0,100% 100%,0 100%,0 8px,8px 8px)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btn:disabled{background:var(--paper-shade);color:var(--pencil);cursor:not-allowed}
+.btn.armed{background:var(--earth)}
+@media (max-width:520px){.replant{grid-template-columns:minmax(0,1fr)}.replant .btn{justify-self:start}}
+
+/* workers */
+.workers{min-width:0}
+.workers-head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--ink);padding-bottom:8px}
+.workers-head h2{margin:0;font-size:32px;font-weight:700;line-height:1;letter-spacing:-.03em}
+.list{list-style:none;margin:0;padding:0}
+.up{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--paper-fold);
+  padding:14px 8px 14px 0;font:inherit;color:var(--ink);cursor:pointer;touch-action:manipulation}
+.up:hover:not(.cant){background:var(--paper-shade)}
+.up:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.up .name{font-size:20px;font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.up .desc{margin-top:3px}
+.up .meta{margin-top:6px;color:var(--graphite)}
+.up .side{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:8px}
+.up .owned{font-size:32px;font-weight:800;line-height:.9;letter-spacing:-.04em}
+.up .cost{font-size:12px;font-weight:600;background:var(--ink);color:var(--paper);padding:5px 8px 5px 10px;white-space:nowrap;clip-path:polygon(5px 0,100% 0,100% 100%,0 100%,0 5px,5px 5px)}
+.up.cant{cursor:not-allowed}
+.up.cant .name{color:var(--graphite)}
+.up.cant .cost{background:var(--paper-shade);color:var(--graphite)}
+.up.locked .name,.up.locked .desc{color:var(--pencil)}
+.foot{margin-top:14px;max-width:30ch;color:var(--graphite)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="ink-bleed"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="rough"/><feGaussianBlur in="rough" stdDeviation=".7" result="soft"/><feMerge><feMergeNode in="soft"/><feMergeNode in="rough"/></feMerge></filter>
+  <filter id="ink-soft"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.1" xChannelSelector="R" yChannelSelector="G" result="rough"/><feGaussianBlur in="rough" stdDeviation=".25"/></filter>
+</svg>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="purse">
+      <div class="count num" id="count">0</div>
+      <div class="unit cap"><b>sap</b>in the store</div>
+    </div>
+    <div class="rates cap">
+      <div><span>per tap</span><b class="num" id="perTap">1</b></div>
+      <div><span>per second</span><b class="num" id="perSec">0</b></div>
+      <div><span>heartwood bonus</span><b class="num" id="multi">x1</b></div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <main class="stage">
+      <div class="biome">
+        <h1 class="biome-word" id="biomeWord">meadow</h1>
+        <p class="cap" id="biomeCap"></p>
+      </div>
+      <div class="tree-wrap">
+        <button class="tree" id="tree" type="button" aria-label="Tap the tree to mine sap"><canvas id="cv"></canvas></button>
+        <div class="fx" id="fx"></div>
+        <div class="plate cap">tap the tree to mine sap. the land changes as the season</div>
+      </div>
+      <div class="season">
+        <div class="season-row cap"><span id="nextLabel">next biome</span><span class="num" id="nextAt"></span></div>
+        <div class="bar"><i id="bar"></i></div>
+      </div>
+      <section class="replant">
+        <div>
+          <h2>replant</h2>
+          <p class="cap">Clear the forest and start a new season. You lose your sap and workers. You keep heartwood, and each one adds 10% to everything you earn, forever. Heartwood comes from sap earned this season.</p>
+          <div class="stats cap">
+            <div>heartwood owned<b class="num" id="heartOwned">0</b></div>
+            <div>replant now for<b class="num" id="heartGain">+0</b></div>
+            <div>earned this season<b class="num" id="runEarned">0</b></div>
+          </div>
+        </div>
+        <button class="btn" id="replantBtn" type="button" disabled>replant forest</button>
+      </section>
+    </main>
+
+    <aside class="workers">
+      <div class="workers-head"><h2>workers</h2><span class="label">owned</span></div>
+      <ul class="list" id="list"></ul>
+      <p class="foot cap">Each worker costs 15% more than the last one you hired. Workers mine sap while you are away from the tree.</p>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var KEY="canopy-miner-v1";
+var C={paper:"#F2F1EC",shade:"#E4E2D9",fold:"#D6D3C8",ink:"#151515",haze:"#A3B5B6",stone:"#C2B98F",cliff:"#A7A07A",meadow:"#7D8C4E",sweater:"#5B7A57",moss:"#56653A",pine:"#34482F",earth:"#6A4B33"};
+
+var BIOMES=[
+  {name:"meadow",at:0,tap:1,cap:"a lone oak in open grass. most forests begin as"},
+  {name:"birch grove",at:1e3,tap:3,cap:"pioneer birches arrive first after fire, white bark catching"},
+  {name:"taiga",at:2.5e4,tap:8,cap:"boreal pine under snow half the year, growing slow and"},
+  {name:"mangrove",at:5e5,tap:20,cap:"stilt roots hold the shore against the tide and filter"},
+  {name:"rainforest",at:1e7,tap:50,cap:"emergent crowns break the canopy at forty metres while below"},
+  {name:"redwoods",at:2.5e8,tap:150,cap:"coast redwoods pass a hundred metres, the tallest living"}
+];
+var UPG=[
+  {name:"forager",desc:"gathers fallen bark and resin",base:15,rate:0.2},
+  {name:"woodcutter",desc:"an axe and a steady pair of hands",base:120,rate:1.5},
+  {name:"sap tapper",desc:"a spile in every trunk, buckets below",base:1300,rate:9},
+  {name:"mycelium network",desc:"fungal threads trade sugar root to root",base:14000,rate:55},
+  {name:"ancient grove",desc:"old growth that feeds itself",base:160000,rate:320}
+];
+
+function fresh(){return {sap:0,run:0,total:0,owned:[0,0,0,0,0],heart:0,taps:0};}
+var S=fresh();
+function load(){
+  try{
+    var raw=localStorage.getItem(KEY); if(!raw) return;
+    var d=JSON.parse(raw), f=fresh();
+    for(var k in f){ if(typeof d[k]===typeof f[k]) f[k]=d[k]; }
+    if(!Array.isArray(f.owned)||f.owned.length!==5) f.owned=[0,0,0,0,0];
+    f.owned=f.owned.map(function(n){return Math.max(0,Math.floor(+n||0));});
+    ["sap","run","total","heart","taps"].forEach(function(k){ if(!isFinite(f[k])||f[k]<0) f[k]=0; });
+    S=f;
+  }catch(e){}
+}
+function save(){ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} }
+
+var mult=function(){return 1+0.1*S.heart;};
+var cost=function(i){return Math.ceil(UPG[i].base*Math.pow(1.15,S.owned[i]));};
+var perSec=function(){var t=0;for(var i=0;i<5;i++)t+=UPG[i].rate*S.owned[i];return t*mult();};
+var biomeIdx=function(){var b=0;for(var i=0;i<BIOMES.length;i++)if(S.run>=BIOMES[i].at)b=i;return b;};
+var perTap=function(){return BIOMES[biomeIdx()].tap*mult();};
+var heartGain=function(){return Math.floor(Math.sqrt(S.run/1e4));};
+function earn(n){S.sap+=n;S.run+=n;S.total+=n;}
+
+var UNITS=["","K","M","B","T","Qa","Qi","Sx","Sp","Oc","No","Dc"];
+function fmt(n,dec){
+  if(!isFinite(n)) return "a lot";
+  if(n<1000){
+    if(dec&&n<100&&n%1) return String(Math.floor(n*10+1e-9)/10);
+    return String(Math.floor(n));
+  }
+  var e=Math.floor(Math.log10(n)/3);
+  if(e>=UNITS.length) return n.toExponential(2).replace("+","");
+  var v=n/Math.pow(1000,e);
+  if(v>=1000){v/=1000;e++;}
+  var s=v<100?String(Math.floor(v*10+1e-9)/10):String(Math.floor(v));
+  return s+UNITS[e];
+}
+
+/* ---------- elements ---------- */
+var $=function(id){return document.getElementById(id);};
+var el={count:$("count"),perTap:$("perTap"),perSec:$("perSec"),multi:$("multi"),word:$("biomeWord"),cap:$("biomeCap"),
+  nextLabel:$("nextLabel"),nextAt:$("nextAt"),bar:$("bar"),heartOwned:$("heartOwned"),heartGain:$("heartGain"),runEarned:$("runEarned"),
+  replant:$("replantBtn"),list:$("list"),tree:$("tree"),cv:$("cv"),fx:$("fx")};
+function set(node,txt){ if(node._t!==txt){node.textContent=txt;node._t=txt;} }
+
+var rows=UPG.map(function(u,i){
+  var li=document.createElement("li");
+  li.innerHTML='<button class="up" type="button"><div><div class="name"></div><div class="desc cap"></div><div class="meta cap"></div></div><div class="side"><span class="owned num">0</span><span class="cost num"></span></div></button>';
+  var b=li.firstChild;
+  b.querySelector(".name").textContent=u.name;
+  b.querySelector(".desc").textContent=u.desc;
+  b.addEventListener("click",function(){buy(i);});
+  el.list.appendChild(li);
+  return {b:b,owned:b.querySelector(".owned"),cost:b.querySelector(".cost"),meta:b.querySelector(".meta")};
+});
+
+function buy(i){
+  var c=cost(i);
+  if(S.sap<c) return;
+  S.sap-=c; S.owned[i]++;
+  render(); save();
+}
+
+/* ---------- tapping ---------- */
+function tap(x,y){
+  var v=perTap(); earn(v); S.taps++;
+  var f=document.createElement("div"); f.className="float num"; f.textContent="+"+fmt(v,true);
+  f.style.left=x+"px"; f.style.top=y+"px"; el.fx.appendChild(f);
+  var leaf=LEAF[curBiome];
+  for(var k=0;k<3;k++){
+    var ch=document.createElement("div"); ch.className="chip";
+    ch.style.left=(x+(Math.random()-.5)*30)+"px"; ch.style.top=(y+(Math.random()-.5)*20)+"px";
+    ch.style.background=leaf[k%leaf.length]; ch.style.setProperty("--dx",((Math.random()-.5)*80)+"px");
+    el.fx.appendChild(ch);
+  }
+  while(el.fx.childElementCount>60) el.fx.removeChild(el.fx.firstChild);
+  setTimeout(function(){ if(f.parentNode) f.parentNode.removeChild(f); },950);
+  el.tree.classList.remove("bump"); void el.tree.offsetWidth; el.tree.classList.add("bump");
+  render();
+}
+el.tree.addEventListener("pointerdown",function(e){
+  if(e.pointerType==="mouse"&&e.button!==0) return;
+  e.preventDefault();
+  var r=el.tree.getBoundingClientRect(); tap(e.clientX-r.left,e.clientY-r.top);
+});
+el.tree.addEventListener("click",function(e){
+  if(e.detail===0){ var r=el.tree.getBoundingClientRect(); tap(r.width/2,r.height/2); }
+});
+el.tree.addEventListener("contextmenu",function(e){e.preventDefault();});
+el.fx.addEventListener("animationend",function(e){ if(e.target.classList.contains("chip")) e.target.remove(); });
+
+/* ---------- replant ---------- */
+var armed=false, armTimer=0;
+el.replant.addEventListener("click",function(){
+  var g=heartGain(); if(g<1) return;
+  if(!armed){
+    armed=true; el.replant.classList.add("armed"); set(el.replant,"tap again to confirm");
+    clearTimeout(armTimer); armTimer=setTimeout(disarm,4000); return;
+  }
+  disarm();
+  var keepHeart=S.heart+g, keepTotal=S.total;
+  S=fresh(); S.heart=keepHeart; S.total=keepTotal;
+  curBiome=-1; save(); render();
+});
+function disarm(){ armed=false; el.replant.classList.remove("armed"); set(el.replant,"replant forest"); }
+
+/* ---------- tree drawing ---------- */
+var ctx=el.cv.getContext("2d"), dpr=1, curBiome=-1, curGrowth=-1;
+var LEAF=[[C.meadow,C.sweater,C.moss],[C.stone,C.meadow,C.cliff],[C.pine,C.moss,C.paper],[C.sweater,C.moss,C.meadow],[C.moss,C.sweater,C.meadow],[C.pine,C.earth,C.moss]];
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function circle(x,y,r,col){ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,Math.max(r,0.5),0,Math.PI*2);ctx.fill();}
+function poly(pts,col){ctx.fillStyle=col;ctx.beginPath();ctx.moveTo(pts[0],pts[1]);for(var i=2;i<pts.length;i+=2)ctx.lineTo(pts[i],pts[i+1]);ctx.closePath();ctx.fill();}
+function pine(x,gy,H,col,snow){
+  ctx.fillStyle=C.earth; ctx.fillRect(x-H*0.025,gy-H*0.2,H*0.05,H*0.2);
+  for(var i=0;i<5;i++){
+    var t=i/5, base=gy-H*0.12-H*t*0.82, wd=H*0.32*(1-t*0.75), top=base-H*0.3;
+    poly([x-wd,base,x,top,x+wd,base],col);
+    if(snow) poly([x-wd*0.38,top+(base-top)*0.38,x,top,x+wd*0.38,top+(base-top)*0.38],C.paper);
+  }
+}
+var SKY=["#BAC6BF","#C8CAB6","#A3B5B6","#B1C1BC","#9DAE98","#B4B9A4"];
+var GROUND=[C.meadow,C.cliff,C.shade,"#7F9693",C.moss,C.earth];
+var TREES=[
+  function oak(o){ var gy=o.gy,cx=o.cx,H=o.H,R=o.R,w=o.w,h=o.h;
+    for(var i=0;i<50;i++){ctx.fillStyle=i%2?C.sweater:C.moss;ctx.fillRect(R()*w,gy+R()*(h-gy),2,5);}
+    for(i=0;i<8;i++) circle(R()*w,gy+4+R()*(h-gy-8),2,C.stone);
+    var tw=H*0.11;
+    poly([cx-tw,gy,cx-tw*0.45,gy-H*0.55,cx+tw*0.45,gy-H*0.55,cx+tw,gy],C.earth);
+    ctx.strokeStyle=C.earth; ctx.lineCap="round"; ctx.lineWidth=Math.max(2,tw*0.4);
+    ctx.beginPath(); ctx.moveTo(cx,gy-H*0.42); ctx.lineTo(cx-H*0.24,gy-H*0.68); ctx.moveTo(cx,gy-H*0.5); ctx.lineTo(cx+H*0.22,gy-H*0.74); ctx.stroke();
+    var rr=H*0.3, ccy=gy-H*0.74;
+    for(i=0;i<24;i++){var a=R()*Math.PI*2,d=Math.sqrt(R())*rr; circle(cx+Math.cos(a)*d*1.3,ccy+Math.sin(a)*d*0.8,rr*(0.3+R()*0.2),LEAF[0][i%3]);}
+  },
+  function birch(o){ var gy=o.gy,cx=o.cx,H=o.H,R=o.R,w=o.w,h=o.h;
+    for(var i=0;i<40;i++){ctx.fillStyle=i%2?C.meadow:C.stone;ctx.fillRect(R()*w,gy+R()*(h-gy),3,3);}
+    [[-0.2,0.78],[0.17,0.86],[0,1]].forEach(function(t){
+      var x=cx+t[0]*w*(0.4+0.6*o.g), th=H*1.08*t[1], tw=Math.max(4,H*0.05);
+      ctx.fillStyle="#ECE9DF"; ctx.fillRect(x-tw/2,gy-th,tw,th);
+      ctx.fillStyle=C.ink;
+      for(var y=gy-th+6;y<gy-4;y+=7+R()*14) ctx.fillRect(x-tw/2+(R()<.5?0:tw*0.45),y,tw*(0.25+R()*0.35),2);
+      for(var k=0;k<11;k++) circle(x+(R()-.5)*th*0.4,gy-th*(0.5+R()*0.55),th*(0.05+R()*0.04),LEAF[1][k%3]);
+    });
+  },
+  function taiga(o){ var gy=o.gy,cx=o.cx,H=o.H,w=o.w,R=o.R,h=o.h;
+    for(var i=0;i<30;i++){ctx.fillStyle=C.paper;ctx.fillRect(R()*w,R()*gy,2,2);}
+    [[0.12,0.42],[0.88,0.5],[0.28,0.3],[0.74,0.34]].forEach(function(p){pine(w*p[0],gy,H*p[1],C.moss,true);});
+    pine(cx,gy,H*0.98,C.pine,true);
+  },
+  function mangrove(o){ var gy=o.gy,cx=o.cx,H=o.H,R=o.R,w=o.w,h=o.h;
+    ctx.fillStyle="#93A7A6"; for(var i=0;i<16;i++) ctx.fillRect(R()*w,gy+6+R()*(h-gy-10),20+R()*40,2);
+    var rootTop=gy-H*0.3; ctx.strokeStyle=C.earth; ctx.lineCap="round"; ctx.lineWidth=Math.max(2,H*0.022);
+    for(i=0;i<7;i++){ var s=i-3; ctx.beginPath(); ctx.moveTo(cx+s*H*0.015,rootTop); ctx.quadraticCurveTo(cx+s*H*0.09,rootTop-H*0.04,cx+s*H*0.14,gy+4); ctx.stroke(); }
+    ctx.fillStyle=C.earth; ctx.fillRect(cx-H*0.035,gy-H*0.66,H*0.07,H*0.38);
+    for(i=0;i<28;i++){var a=R()*Math.PI*2,d=Math.sqrt(R()); circle(cx+Math.cos(a)*d*H*0.44,gy-H*0.8+Math.sin(a)*d*H*0.17,H*(0.08+R()*0.05),LEAF[3][i%3]);}
+  },
+  function rainforest(o){ var gy=o.gy,cx=o.cx,H=o.H*0.9,R=o.R,w=o.w;
+    for(var i=0;i<16;i++) circle(R()*w,gy-R()*H*0.1,H*(0.06+R()*0.06),i%2?C.moss:C.pine);
+    var bark="#8A7A5C";
+    poly([cx-H*0.05,gy,cx-H*0.02,gy-H*1.05,cx+H*0.02,gy-H*1.05,cx+H*0.05,gy],bark);
+    poly([cx-H*0.16,gy,cx-H*0.03,gy-H*0.18,cx,gy],bark); poly([cx+H*0.16,gy,cx+H*0.03,gy-H*0.18,cx,gy],bark);
+    ctx.strokeStyle=C.sweater; ctx.lineWidth=1.5;
+    for(i=0;i<6;i++){var vx=cx+(R()-.5)*H*0.6; ctx.beginPath(); ctx.moveTo(vx,gy-H*0.95); ctx.quadraticCurveTo(vx+(R()-.5)*30,gy-H*0.6,vx+(R()-.5)*20,gy-H*(0.2+R()*0.3)); ctx.stroke();}
+    [[1.02,0.5,C.pine],[1.08,0.38,C.moss],[1.16,0.26,C.sweater]].forEach(function(L,j){
+      for(var k=0;k<14;k++) circle(cx+(R()-.5)*H*L[1]*2,gy-H*L[0]+(R()-.5)*H*0.06,H*(0.05+R()*0.04),j===2&&k%3===0?C.meadow:L[2]);
+    });
+  },
+  function redwood(o){ var gy=o.gy,cx=o.cx,R=o.R,w=o.w,h=o.h,g=o.g;
+    var H=h*1.2*g, bw=w*0.07+w*0.11*g, bark="#7A4630";
+    for(var i=0;i<14;i++){var fx=R()*w; poly([fx-12,gy+8,fx,gy-10-R()*10,fx+12,gy+8],i%2?C.moss:C.sweater);}
+    poly([cx-bw,gy,cx-bw*0.35,gy-H,cx+bw*0.35,gy-H,cx+bw,gy],bark);
+    ctx.strokeStyle="#5A321F"; ctx.lineWidth=1.5;
+    for(i=-3;i<=3;i++){ctx.beginPath();ctx.moveTo(cx+i*bw*0.22,gy);ctx.lineTo(cx+i*bw*0.08,gy-H);ctx.stroke();}
+    for(i=0;i<16;i++){
+      var t=0.45+i/16*0.6, y=gy-H*t, side=i%2?1:-1, len=bw*(1.4-t*0.6)*(0.8+R()*0.5);
+      if(y<-20) continue;
+      poly([cx,y-10,cx+side*len,y+14,cx,y+6],i%3?C.pine:C.moss);
+    }
+    var px=cx+bw+18; ctx.fillStyle=C.ink; ctx.fillRect(px-1.5,gy-12,3,12); circle(px,gy-15,2.6,C.ink);
+    ctx.font="600 9px Archivo, Helvetica, Arial, sans-serif"; ctx.fillText("1.7 m, for scale",px+8,gy-4);
+  }
+];
+function draw(){
+  if(curBiome<0) return;
+  var w=el.cv.width/dpr, h=el.cv.height/dpr; if(!w||!h) return;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  var gy=h*0.84;
+  ctx.fillStyle=SKY[curBiome]; ctx.fillRect(0,0,w,h);
+  ctx.fillStyle=GROUND[curBiome]; ctx.fillRect(0,gy,w,h-gy);
+  TREES[curBiome]({w:w,h:h,gy:gy,cx:w*0.5,H:h*0.72*curGrowth,g:curGrowth,R:rng(curBiome*7919+3)});
+}
+function resize(){
+  var r=el.tree.getBoundingClientRect(); dpr=Math.min(window.devicePixelRatio||1,2);
+  el.cv.width=Math.round(r.width*dpr); el.cv.height=Math.round(r.height*dpr); draw();
+}
+if(window.ResizeObserver) new ResizeObserver(resize).observe(el.tree); else window.addEventListener("resize",resize);
+
+/* ---------- render ---------- */
+function render(){
+  set(el.count,fmt(S.sap));
+  set(el.perTap,fmt(perTap(),true));
+  set(el.perSec,fmt(perSec(),true));
+  set(el.multi,"x"+(Math.round(mult()*10)/10));
+
+  var b=biomeIdx(), B=BIOMES[b], N=BIOMES[b+1], prog;
+  if(N){ prog=Math.min(1,(S.run-B.at)/(N.at-B.at)); set(el.nextLabel,"next biome: "+N.name); set(el.nextAt,fmt(S.run)+" / "+fmt(N.at)+" sap earned"); }
+  else { prog=Math.min(1,Math.log10(1+S.run/B.at)/2); set(el.nextLabel,"final biome. the redwoods keep growing"); set(el.nextAt,fmt(S.run)+" sap earned"); }
+  el.bar.style.width=(prog*100).toFixed(1)+"%";
+  var growth=Math.round((0.5+0.5*prog)*40)/40;
+  if(b!==curBiome){
+    var first=curBiome===-1&&S.run===0;
+    curBiome=b; set(el.word,B.name); set(el.cap,B.cap);
+    if(!first){ el.word.classList.remove("fresh"); void el.word.offsetWidth; el.word.classList.add("fresh"); }
+    curGrowth=growth; draw();
+  } else if(growth!==curGrowth){ curGrowth=growth; draw(); }
+
+  for(var i=0;i<5;i++){
+    var r=rows[i], c=cost(i), can=S.sap>=c, u=UPG[i];
+    var locked=S.owned[i]===0&&i>0&&S.owned[i-1]===0&&!can;
+    r.b.classList.toggle("cant",!can);
+    r.b.classList.toggle("locked",locked);
+    set(r.owned,String(S.owned[i]));
+    set(r.cost,fmt(c)+" sap");
+    set(r.meta,"+"+fmt(u.rate*mult(),true)+"/s each"+(S.owned[i]?", making "+fmt(u.rate*S.owned[i]*mult(),true)+"/s":""));
+    r.b.setAttribute("aria-label","Hire "+u.name+" for "+fmt(c)+" sap. Owned "+S.owned[i]);
+  }
+
+  var hg=heartGain();
+  set(el.heartOwned,fmt(S.heart));
+  set(el.heartGain,"+"+fmt(hg));
+  set(el.runEarned,fmt(S.run));
+  el.replant.disabled=hg<1;
+  if(hg<1&&armed) disarm();
+  if(hg<1) el.replant.title="Earn 10K sap this season to replant"; else el.replant.removeAttribute("title");
+}
+
+/* ---------- loop and save ---------- */
+load(); render(); resize();
+var last=performance.now();
+setInterval(function(){
+  var now=performance.now(), dt=Math.min((now-last)/1000,60); last=now;
+  var ps=perSec(); if(ps>0){ earn(ps*dt); render(); }
+},100);
+setInterval(save,5000);
+document.addEventListener("visibilitychange",function(){ if(document.hidden) save(); });
+window.addEventListener("pagehide",save);
+})();
+</script>
+</body>
+</html>
