@@ -1,6 +1,19 @@
 # Jemfall: The Guide
 
-Status: concept. Recommended pick is Glint. Rough sketch: game/art/glint-concept.png
+Status: **Glint is locked.** First PixelLab version made Nov 23, 2026.
+
+## Asset Checklist
+* [x] Master front design, 8 directions, 64x64 (game/art/glint/fixed/rotations)
+* [x] Unimpressed reaction animation, 9 frames (game/art/glint/fixed/animations/unimpressed, preview: game/art/glint/unimpressed.gif)
+* [x] Placeholder profile picture (game/art/glint-avatar.png)
+* [ ] Expressions: worried, shocked, proud
+* [ ] Idle float animation
+* [ ] Talk animation
+* [ ] Blink animation
+* [ ] Map sprite 16x16
+* [ ] Hand cleanup of stray pixels on the master front frame (shows at large sizes)
+
+Originals from PixelLab are kept untouched in game/art/glint/original. Every fixed file is the original snapped to the 6 Glint colors, with the dark outline completed. The fix script lives with Claude's tools and can be rerun on any new PixelLab export.
 
 ## The Job
 * **In the game:** teaches new players, answers "what do I do next," explains what any item is for. This is the fix for OSRS and Melvor being hard to get into.

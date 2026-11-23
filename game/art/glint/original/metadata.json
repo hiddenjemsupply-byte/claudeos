@@ -1,0 +1,50 @@
+{
+  "group_id": "e6360fb4-fa28-493a-bf67-a6cd4e63db9c",
+  "states": [
+    {
+      "character": {
+        "id": "24fa08d9-583c-4e7f-8487-1c9acf4091b2",
+        "name": "Idle",
+        "prompt": "Cute small living gem creature mascot named Glint. Body is a faceted cut gem in bright pink purple, shaped like a classic diamond icon, wider at the top and coming to a point at the bottom. Two large expressive eyes with white whites and dark pupils, a small simple mouth, tiny stubby arms on the sides. Floating. Front view. Thick dark purple black outline, simple cel shading with a bright shine on the upper left facet. Limited palette: #C837D6, #8A1E8C, #EE6BF0, #FFC6FB, #2E222F, #FFFFFF. 16 bit pixel art, transparent background.",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "custom",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-11-23T03:37:18.932915+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "Same_character_happy_worried_deadpan_with_half_clo": {
+            "south": [
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_000.png",
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_001.png",
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_002.png",
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_003.png",
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_004.png",
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_005.png",
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_006.png",
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_007.png",
+              "Idle/animations/Same_character_happy_worried_deadpan_with_half_clo/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-11-23T03:42:59.624839"
+}
