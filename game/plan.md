@@ -180,6 +180,8 @@ This is a big game. What's written here is the full vision, and it gets built a 
 
 **Runners up (all .com unregistered, no games found):** Jemborne, Jemrealm, Jemrift.
 
+**Also checked: JemMMO.** jemmmo.com unregistered, no game on Steam or the App Store, nothing on the web. Concerns: three m's in a row is hard to read and type, and "MMO" promises a full MMO when this is a light shared world.
+
 **Not checked yet:** a formal trademark search. Do that before spending money on the name, and grab the domain and social handles once it's locked.
 
 ## Open Questions for Iain
