@@ -1,4 +1,4 @@
-# Game Plan: Rough Draft v0.2
+# Game Plan: Rough Draft v0.3
 
 Status: idea stage. Nothing gets built until this plan feels right.
 Working title: none yet.
@@ -19,6 +19,10 @@ Melvor Idle's skilling and crafting, Old School RuneScape's feel, and Diablo 3's
 * Lots of bosses: mini bosses, group bosses, world bosses
 * Diablo 3 ideas: gear, min maxing, dungeons, raids
 * PvP only with level brackets or a level cap
+* Classes
+* Seasons, for sure
+* No max level, like SimpleMMO
+* One account, two free character slots. More slots cost the paid currency
 
 ## The Gap in the Market
 * **Melvor Idle** proved the idea sells. Estimated 424K copies on Steam at $9.99, around $3.6M gross (third party estimate, not official). Jagex picked it up as publisher. Weakness: no other players.
@@ -61,9 +65,29 @@ Point 3 is my suggestion, not locked.
 * **Dungeons:** short runs with a boss at the end. Solo or group.
 * **Raids:** big group fights for the best loot.
 * **Endless scaling challenge:** like Diablo's Greater Rifts. Push as deep as your build allows, with a leaderboard.
-* **Progress after max level:** like Diablo's Paragon levels, so XP always matters.
 
 Recommendation: regular fights run on their own and your build decides the result. On bosses, active players can trigger abilities for an edge. That keeps it idle friendly and still rewards being on. Flagged for Iain.
+
+## Classes
+* Pick a class when you make a character. Your class decides how you fight: your abilities, your gear, your role in a group.
+* Every class can do every gathering and making skill. Class is about combat, not about locking anyone out of woodcutting.
+* Recommendation: launch with 3 classes that cover melee, ranged, and magic (working names: Warrior, Ranger, Mage). Add more classes over time, a good fit for new seasons.
+* Each class gets its own legendary powers and set items, so builds feel different between classes and inside each class.
+* Groups need a mix of classes for raids and group bosses, which gives players a reason to team up.
+
+## No Max Level
+* Levels go up forever, for your character and for every skill.
+* Each level takes more XP than the last, so numbers keep climbing without breaking the game.
+* Milestones every so often (example: every 10 levels) unlock things like new areas, titles, or perks, so there's always a next target.
+* Hiscores show who's highest, which matters more when there's no ceiling.
+
+## Seasons
+* Every season starts a fresh seasonal world: new characters, everyone starts at zero, new leaderboards.
+* Each season brings a theme or new feature (a new class, a new dimension, a new boss, a rule twist).
+* Season rewards: cosmetics and titles you keep forever. Never power.
+* When a season ends, seasonal characters move over to the permanent world, like Diablo 3.
+* Recommendation: seasons around 3 months long. Flagged for Iain.
+* Bonus: every season launch is a natural video and a reason for old players to come back.
 
 ## Bosses
 * **Mini bosses:** random finds while stepping through a biome
@@ -103,7 +127,12 @@ Small on purpose.
 * Specific tools get picked when we start building, after more research.
 
 ## Money (rough)
-Recommendation: free to play in the browser, with a paid membership or one time unlock for extra content. Never pay to win. It would kill the trading economy and the leaderboards.
+* Free to play in the browser.
+* A paid currency you buy with real money, like SimpleMMO's diamonds. Name not picked yet.
+* Every account gets 2 free character slots. More slots cost the paid currency.
+* Other things the paid currency could buy: cosmetics (outfits, pets, map icons), extra bank space, a membership.
+* Recommendation: free players can earn small amounts of the paid currency by playing (season rewards, achievements). It keeps free players around, and the game needs them for the economy and for bosses.
+* Rule: the paid currency never buys power, XP, or gear. That would wreck the player market, the leaderboards, and seasons.
 
 ## Rules
 * 100% original. No RuneScape, Diablo, Terraria, or SimpleMMO names, art, items, maps, or music. Same kinds of ideas, our own world.
@@ -122,11 +151,11 @@ This is a big game. What's written here is the full vision, and it gets built a 
 6. **Endgame:** raids, set items, endless scaling challenge, PvP arenas, phone apps, Steam
 
 ## Open Questions for Iain
-* Classes like Diablo (pick warrior, mage, etc.), or no classes like OSRS where your gear and skills decide your style?
-* Seasons like Diablo: fresh start leaderboards every few months, or one permanent world only?
-* Max level: 99 like OSRS, or something else?
-* One character per account, or several?
-* Name: still open
+* Do the 3 starting classes (melee, ranged, magic) feel right, or do you have specific classes in mind?
+* Season length: about 3 months OK?
+* Paid currency name: diamonds, gems, or something that fits our world?
+* Should free players be able to earn some paid currency, or is it buy only?
+* Game name: still open
 
 ## Sources
 * Melvor Idle sales estimate: https://raijin.gg/app/1267910/Melvor_Idle
