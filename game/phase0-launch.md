@@ -29,11 +29,13 @@ Faceless content needs something to show, and right now there's only art. So Pha
 Out in the open, not in the hook. The Discord FAQ says it, posts carry the platform AI label, and anyone who asks gets a straight answer.
 
 ## 1. Teaser Video (TikTok, Reels, Shorts)
+**Status:** Kling shot made by Iain. Draft edit: game/art/teaser-draft.mp4 (17 seconds: fall and crash, Glint wakes up, title card). Font: Press Start 2P (free, SIL Open Font License, license in game/art/fonts).
+
 About 18 seconds. Cinematic shots from Kling, the Guide from PixelLab, the Guide's line voiced through ElevenLabs, chiptune or a trending sound.
 
 > **0:00** Dark sky. A pink purple spark. Text: *something fell from the sky*
 > **0:03** The Jem falls and slams into the grass. The ground cracks. A rift tears open.
-> **0:07** Guide text box: *Oh. Oh no. That's a Jem.*
+> **0:07** Guide text box: *Oh. Hi. I fell.*
 > **0:10** Quick cuts over the look test colors. Text: *click to step. skills that never cap. a lot of bosses.*
 > **0:14** Title card: **JEMFALL**. *a simple MMO in your browser*
 > **0:16** *Day One is open. Discord in bio.*
