@@ -44,3 +44,4 @@ A simple MMO (Melvor Idle, Old School RuneScape, SimpleMMO, and Diablo 3 inspire
 * Iain sets up plugins himself. Don't try to install or configure them for him.
 * Work in phases: build a piece of the game, then market that piece on every platform before moving on.
 * Go step by step and in depth. Research before each new step.
+* Jemfall content is never personal: no face on camera, no mention of Iain's job or family. The in game Guide character is the face of Jemfall. Brand voice still follows the Never rules (no dashes, no emojis, no fluff).

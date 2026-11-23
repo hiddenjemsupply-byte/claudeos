@@ -7,8 +7,8 @@ Plugins: Iain sets these up himself
 ## The Rule
 Build a piece of the game, then market that piece. Every build phase ends with a marketing push before the next phase starts. Building is the content.
 
-## The Story Angle
-A sales manager with no coding background building an MMO from scratch, for his family and his freedom. That's true, it's different, and it's why people will follow the build and not just the game. Use voice.md and soul.md for anything in Iain's name.
+## The Angle
+Nothing personal. No face, no job, no family. The game is the star, and **the Guide is the face of Jemfall**: the in game Guide character talks to the audience through a pixel text box. Clips are pixel art, screen recordings, and on screen text. No AI voices.
 
 ## What Each Platform Does
 * **TikTok, YouTube Shorts, Instagram Reels:** discovery. 30 to 60 second vertical clips, edited for short form, not cut down from long videos. Practitioner reports say straight reposts of long videos do worse than clips made for short form.
@@ -20,7 +20,7 @@ A sales manager with no coding background building an MMO from scratch, for his 
 ## Content Pillars
 1. **Build progress:** "here's what I built this week"
 2. **Player decisions:** ask the audience to vote on real choices (class names, boss ideas, biome order). People who help design it stick around.
-3. **The story:** why I'm doing this, the wins, the failures, learning to code from nothing
+3. **The Guide:** the Guide answers one player question per clip, in character
 4. **Reveals:** classes, bosses, Jems, dimensions, each one gets its own post
 
 ## One Ask Per Post
@@ -31,7 +31,7 @@ Every post asks for one thing, not a stack.
 ## Marketing Beat for Each Build Phase
 Phase 0 kit (script, captions, Discord setup, first two weeks): game/phase0-launch.md
 
-0. **Plan:** announce the project. "I'm building an MMO with zero coding experience." Reveal the name, the pitch, and the look. Open the Discord.
+0. **Plan:** teaser (a Jem falls from the sky), Jem reveal, a few Guide clips. Open the Discord. Keep it short and move to Phase 1.
 1. **Solo prototype:** first clip of stepping across the map. Discord members become the first testers.
 2. **Core loop:** show crafting chains, the first fight, the first boss. Discord playtests.
 3. **Shared world:** first time real players are in the world together. Big moment, big video.
