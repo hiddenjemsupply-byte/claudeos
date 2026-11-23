@@ -1,4 +1,4 @@
-# Game Plan: Rough Draft v0.3
+# Game Plan: Rough Draft v0.4
 
 Status: idea stage. Nothing gets built until this plan feels right.
 Working title: none yet.
@@ -22,7 +22,7 @@ Melvor Idle's skilling and crafting, Old School RuneScape's feel, and Diablo 3's
 * Classes
 * Seasons, for sure
 * No max level, like SimpleMMO
-* One account, two free character slots. More slots cost the paid currency
+* One account, two free character slots. More slots cost Jems, the paid currency
 
 ## The Gap in the Market
 * **Melvor Idle** proved the idea sells. Estimated 424K copies on Steam at $9.99, around $3.6M gross (third party estimate, not official). Jagex picked it up as publisher. Weakness: no other players.
@@ -71,7 +71,7 @@ Recommendation: regular fights run on their own and your build decides the resul
 ## Classes
 * Pick a class when you make a character. Your class decides how you fight: your abilities, your gear, your role in a group.
 * Every class can do every gathering and making skill. Class is about combat, not about locking anyone out of woodcutting.
-* Recommendation: launch with 3 classes that cover melee, ranged, and magic (working names: Warrior, Ranger, Mage). Add more classes over time, a good fit for new seasons.
+* Launch with 3 classes: melee, ranged, and magic (working names: Warrior, Ranger, Mage). Locked for now. Add more classes over time, a good fit for new seasons.
 * Each class gets its own legendary powers and set items, so builds feel different between classes and inside each class.
 * Groups need a mix of classes for raids and group bosses, which gives players a reason to team up.
 
@@ -86,7 +86,7 @@ Recommendation: regular fights run on their own and your build decides the resul
 * Each season brings a theme or new feature (a new class, a new dimension, a new boss, a rule twist).
 * Season rewards: cosmetics and titles you keep forever. Never power.
 * When a season ends, seasonal characters move over to the permanent world, like Diablo 3.
-* Recommendation: seasons around 3 months long. Flagged for Iain.
+* Seasons run 3 months. Locked.
 * Bonus: every season launch is a natural video and a reason for old players to come back.
 
 ## Bosses
@@ -128,11 +128,12 @@ Small on purpose.
 
 ## Money (rough)
 * Free to play in the browser.
-* A paid currency you buy with real money, like SimpleMMO's diamonds. Name not picked yet.
-* Every account gets 2 free character slots. More slots cost the paid currency.
-* Other things the paid currency could buy: cosmetics (outfits, pets, map icons), extra bank space, a membership.
-* Recommendation: free players can earn small amounts of the paid currency by playing (season rewards, achievements). It keeps free players around, and the game needs them for the economy and for bosses.
-* Rule: the paid currency never buys power, XP, or gear. That would wreck the player market, the leaderboards, and seasons.
+* The paid currency is **Jems**, named after Iain's middle name, Jem. It ties into the Hidden Jem Supply brand.
+* Jems look like a bright pink purple gem. Exact shade gets picked with the art.
+* Players can buy Jems with real money, and free players can earn small amounts by playing (season rewards, achievements). Free players matter: the game needs them for the economy and for bosses.
+* Every account gets 2 free character slots. More slots cost Jems.
+* Other things Jems could buy: cosmetics (outfits, pets, map icons), extra bank space, a membership.
+* Rule: Jems never buy power, XP, or gear. That would wreck the player market, the leaderboards, and seasons.
 
 ## Rules
 * 100% original. No RuneScape, Diablo, Terraria, or SimpleMMO names, art, items, maps, or music. Same kinds of ideas, our own world.
@@ -151,10 +152,6 @@ This is a big game. What's written here is the full vision, and it gets built a 
 6. **Endgame:** raids, set items, endless scaling challenge, PvP arenas, phone apps, Steam
 
 ## Open Questions for Iain
-* Do the 3 starting classes (melee, ranged, magic) feel right, or do you have specific classes in mind?
-* Season length: about 3 months OK?
-* Paid currency name: diamonds, gems, or something that fits our world?
-* Should free players be able to earn some paid currency, or is it buy only?
 * Game name: still open
 
 ## Sources
