@@ -34,3 +34,13 @@ I am Iain. I am currently a sales manager and I want to start my own business an
 * Writing content for my audience, not just about a topic
 * Crafting CTAs, pitch copy, or anything meant to convert
 * Unsure what language or framing will land with my people
+
+## Current Project: Jemfall
+A simple MMO (Melvor Idle, Old School RuneScape, SimpleMMO, and Diablo 3 inspired). Browser first.
+* Game plan: game/plan.md
+* Marketing plan: game/marketing.md
+* Accounts: game/accounts-setup.md
+* Handles: @playjemfall everywhere. Public email: hello@jemfall.com
+* Iain sets up plugins himself. Don't try to install or configure them for him.
+* Work in phases: build a piece of the game, then market that piece on every platform before moving on.
+* Go step by step and in depth. Research before each new step.

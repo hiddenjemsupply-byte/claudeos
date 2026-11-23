@@ -1,4 +1,4 @@
-# Jemfall: Game Plan v0.6
+# Jemfall: Game Plan v0.7
 
 Name: **Jemfall** (locked)
 
@@ -8,7 +8,7 @@ Status: idea stage. Nothing gets built until this plan feels right.
 Melvor Idle's skilling and crafting, Old School RuneScape's feel, and Diablo 3's gear chase, in a shared world where you click to step across a map through biomes and dimensions. Built so a total beginner can pick it up. Runs in a browser, so one link works on phone and PC.
 
 ## What Iain Wants
-* Leveling skills toward a max level
+* Leveling skills forever, no max level
 * Crafting chains: gather, process, make gear, use it to go further
 * Combat and gear, chasing better drops, min maxing builds
 * Progress while away
@@ -154,6 +154,7 @@ Based on what SimpleMMO sells, filtered through the no pay to win rule.
 ## Rules
 * 100% original. No RuneScape, Diablo, Terraria, or SimpleMMO names, art, items, maps, or music. Same kinds of ideas, our own world.
 * Every build session is video content. Build in public.
+* Build a piece, then market that piece before moving on. Full marketing plan: game/marketing.md
 
 ## Reality Check
 This is a big game. What's written here is the full vision, and it gets built a piece at a time. Version one is one biome, a handful of skills, and stepping on a map. If that small version isn't fun, the rest won't save it.
@@ -185,7 +186,7 @@ This is a big game. What's written here is the full vision, and it gets built a 
 **Not checked yet:** a formal trademark search. Do that before spending money on the name, and grab the domain and social handles once it's locked.
 
 ## Open Questions for Iain
-* None right now. Next up: trademark check, grab jemfall.com and social handles, then pick the look (art style and colors).
+* None right now. Done: jemfall.com, hello@jemfall.com, @playjemfall on every platform. Next up: pick the look (art style and colors), then the Phase 0 marketing push.
 
 ## Sources
 * Melvor Idle sales estimate: https://raijin.gg/app/1267910/Melvor_Idle
