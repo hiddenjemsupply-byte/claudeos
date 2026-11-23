@@ -1,4 +1,4 @@
-# Jemfall: Game Plan v0.7
+# Jemfall: Game Plan v0.8
 
 Name: **Jemfall** (locked)
 
@@ -50,6 +50,16 @@ Point 3 is my suggestion, not locked.
 * A pixel art map where you click to take a step, like SimpleMMO but with better visuals.
 * Each step can turn up something: a tree to chop, an ore vein, a monster, a mini boss, an item, a traveler, a funny bit of text.
 * Find a resource and you can start gathering it. That keeps running while you're idle.
+
+## The Look
+Inspired by Terraria, Stardew Valley, SimpleMMO, and old Pokemon. Look test image: game/art/look-test.png
+* **Mood:** a medium between bright and dark, set by place. The overworld is bright and colorful. Each dimension gets darker and moodier the deeper you go. The world's colors tell you how far from home you are.
+* **Palette:** Resurrect 64 by Kerrie Lake (free on Lospec). 64 colors with bright greens and blues for the overworld and deep purples, navies, and teals for the dimensions. Using one fixed palette keeps everything matching, even when art comes from different places.
+* **The Jem color:** a custom bright pink purple that is not in the palette (#C837D6, with #8A1E8C shadow, #EE6BF0 light, #FFC6FB shine). It's the one color nothing else in the world uses, so a Jem always pops, on bright grass or in the darkest dimension.
+* **Grid:** 16x16 pixel tiles, scaled up on screen. Same base size as Stardew Valley, and the most common size for pixel art asset packs. Characters 16x32, like Stardew's NPCs.
+* **Where the art comes from:** start with a 16x16 fantasy asset pack that allows commercial use, recolored to the palette. Later, pay a pixel artist for original Jemfall art (classes, bosses, Jems, logo). Read and save every pack's license before using it.
+* **No AI generated art in the game.** In 2026, gamers are punishing it hard: boycotts, review bombs, and studios walking it back after backlash. Even honest devs get falsely accused. Jemfall's audience is exactly these players, so hand made art only, and show it being made in the videos.
+* design.md is the Field Xerox system for Iain's clothing brand. It does not apply to the game's art.
 
 ## Beginner Friendly (top priority)
 * A Guide character, like Terraria's, who tells you what to do next and answers "what's this for?"
@@ -186,7 +196,8 @@ This is a big game. What's written here is the full vision, and it gets built a 
 **Not checked yet:** a formal trademark search. Do that before spending money on the name, and grab the domain and social handles once it's locked.
 
 ## Open Questions for Iain
-* None right now. Done: jemfall.com, hello@jemfall.com, @playjemfall on every platform. Next up: pick the look (art style and colors), then the Phase 0 marketing push.
+* None right now. Done: jemfall.com, hello@jemfall.com, @playjemfall on every platform, the look. Next up: the Phase 0 marketing push.
+* Jem color: lock option B (custom pink purple) or tweak it?
 
 ## Sources
 * Melvor Idle sales estimate: https://raijin.gg/app/1267910/Melvor_Idle
@@ -202,3 +213,10 @@ This is a big game. What's written here is the full vision, and it gets built a 
 * Diablo 3 Greater Rifts: https://maxroll.gg/d3/resources/greater-rift-explained
 * Diablo 3 Paragon levels: https://blizzardwatch.com/2021/01/13/paragon-levels-diablo-3/
 * Diablo 3 gear loop: https://us.forums.blizzard.com/en/d3/t/how-hard-is-d3-endgame/46583
+* Resurrect 64 palette: https://lospec.com/palette-list/resurrect-64
+* Stardew sprite sizes: https://forums.stardewvalley.net/threads/sprite-size-first-time-modding-sv.7128/latest
+* 16x16 as a common asset size: https://douteigami.itch.io/16x16-tiles
+* Example 16x16 packs with commercial licenses: https://tolee-mi.itch.io/fantasy-quest and https://sorceressgamelab.itch.io/top-down-rpg-tileset
+* AI art backlash: https://www.pcgamer.com/gaming-industry/steam-week-in-review-a-touch-of-ai-is-all-it-takes-to-trigger-backlash-as-a-promising-new-indie-falls-afoul-of-slop-skeptics/
+* Studios reversing AI use: https://kotaku.com/hooded-horse-gen-ai-art-ban-4x-strategy-steam-2000658179
+* False AI accusations: https://www.vice.com/en/article/steam-reviews-have-a-serious-ai-problem-that-needs-to-be-fixed/
