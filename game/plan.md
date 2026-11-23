@@ -1,6 +1,6 @@
-# Game Plan: Rough Draft v0.5
+# Jemfall: Game Plan v0.6
 
-Working title: **Jemfall** (recommended, not locked)
+Name: **Jemfall** (locked)
 
 Status: idea stage. Nothing gets built until this plan feels right.
 
@@ -168,7 +168,7 @@ This is a big game. What's written here is the full vision, and it gets built a 
 6. **Endgame:** raids, set items, endless scaling challenge, PvP arenas, phone apps, Steam
 
 ## Name
-**Recommendation: Jemfall.**
+**Locked: Jemfall.** Tagline idea for videos: "the Jem MMO."
 * Ties straight into Jem and Jems, so the brand and the currency share one name.
 * Gives the world a story for free: Jems fell from the sky and tore open the rifts into other dimensions. That explains the currency, the dimensions, and why everyone is out exploring.
 * Short, easy to say, easy to spell.
@@ -185,7 +185,7 @@ This is a big game. What's written here is the full vision, and it gets built a 
 **Not checked yet:** a formal trademark search. Do that before spending money on the name, and grab the domain and social handles once it's locked.
 
 ## Open Questions for Iain
-* Lock Jemfall as the name, or keep looking?
+* None right now. Next up: trademark check, grab jemfall.com and social handles, then pick the look (art style and colors).
 
 ## Sources
 * Melvor Idle sales estimate: https://raijin.gg/app/1267910/Melvor_Idle
