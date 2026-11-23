@@ -1,7 +1,8 @@
-# Game Plan: Rough Draft v0.4
+# Game Plan: Rough Draft v0.5
+
+Working title: **Jemfall** (recommended, not locked)
 
 Status: idea stage. Nothing gets built until this plan feels right.
-Working title: none yet.
 
 ## The Pitch
 Melvor Idle's skilling and crafting, Old School RuneScape's feel, and Diablo 3's gear chase, in a shared world where you click to step across a map through biomes and dimensions. Built so a total beginner can pick it up. Runs in a browser, so one link works on phone and PC.
@@ -132,8 +133,23 @@ Small on purpose.
 * Jems look like a bright pink purple gem. Exact shade gets picked with the art.
 * Players can buy Jems with real money, and free players can earn small amounts by playing (season rewards, achievements). Free players matter: the game needs them for the economy and for bosses.
 * Every account gets 2 free character slots. More slots cost Jems.
-* Other things Jems could buy: cosmetics (outfits, pets, map icons), extra bank space, a membership.
-* Rule: Jems never buy power, XP, or gear. That would wreck the player market, the leaderboards, and seasons.
+* Rule: Jems never buy power, XP, gear, or speed. That would wreck the player market, the leaderboards, and seasons.
+
+### What Jems Buy
+Based on what SimpleMMO sells, filtered through the no pay to win rule.
+
+**Yes**
+* Custom character sprites and outfits
+* Custom name color
+* Name changes
+* Map and profile backgrounds
+* Pets and map icons
+* Extra character slots (after the 2 free)
+* Extra bank space
+* Extra task queue slots: line up more tasks so the game moves to the next one on its own. Saves clicks, not time. The offline cap stays the same for everyone, so paying never means more progress per day.
+
+**No**
+* Faster unlocks, XP boosts, or skipping timers. In a game with seasonal leaderboards, buying speed is buying a rank. SimpleMMO does this. We don't.
 
 ## Rules
 * 100% original. No RuneScape, Diablo, Terraria, or SimpleMMO names, art, items, maps, or music. Same kinds of ideas, our own world.
@@ -151,8 +167,23 @@ This is a big game. What's written here is the full vision, and it gets built a 
 5. **Expand:** dungeons, parties, world bosses, more biomes, the first new dimension
 6. **Endgame:** raids, set items, endless scaling challenge, PvP arenas, phone apps, Steam
 
+## Name
+**Recommendation: Jemfall.**
+* Ties straight into Jem and Jems, so the brand and the currency share one name.
+* Gives the world a story for free: Jems fell from the sky and tore open the rifts into other dimensions. That explains the currency, the dimensions, and why everyone is out exploring.
+* Short, easy to say, easy to spell.
+
+**Availability check (Nov 23, 2026):**
+* jemfall.com: unregistered
+* Steam, Apple App Store, itch.io: no game by that name
+* Web search: nothing using the name
+
+**Runners up (all .com unregistered, no games found):** Jemborne, Jemrealm, Jemrift.
+
+**Not checked yet:** a formal trademark search. Do that before spending money on the name, and grab the domain and social handles once it's locked.
+
 ## Open Questions for Iain
-* Game name: still open
+* Lock Jemfall as the name, or keep looking?
 
 ## Sources
 * Melvor Idle sales estimate: https://raijin.gg/app/1267910/Melvor_Idle
