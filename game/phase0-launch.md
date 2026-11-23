@@ -1,4 +1,4 @@
-# Jemfall: Phase 0 Launch Kit v2
+# Jemfall: Phase 0 Launch Kit v3
 
 Goal: announce Jemfall, open the Discord, and get the first Day One members. The only ask: **join the Discord.**
 
@@ -6,7 +6,16 @@ Goal: announce Jemfall, open the Discord, and get the first Day One members. The
 * Nothing personal. No face, no job, no family. The game is the star.
 * **The Guide is the face of Jemfall.** The Guide character from the game talks to the audience through a pixel text box on screen. Every clip builds the character players will meet in the game.
 * No camera needed. Clips are pixel art, screen recordings, and on screen text with music.
-* No AI voices. Same backlash risk as AI art. Text on screen, or your own voice later if you ever want to.
+* AI tools are in (Iain's call): the Guide, the videos, and the Guide's voice.
+
+## Tools
+* **PixelLab: design and animate the Guide.** Built for pixel art game assets, not general images. It makes a character, turns it 4 or 8 directions, and animates it (idle, talk, walk) as sprite sheets that go straight into the game. One Guide for the game and for social. Check current pricing on pixellab.ai.
+* **Kling: cinematic shots.** The Jem falling, the rift tearing open, world flyovers. Use image to video with a PixelLab still as the start frame so the style carries over. Kling's own guide says keep motion slow, because fast motion blurs pixel edges. If the Guide stops looking like the Guide between clips, try Runway, which reviewers rate best for keeping a character consistent.
+* **ElevenLabs Voice Changer: the Guide's voice.** Record yourself on your phone, then convert it to a character voice. Your timing and humor, a voice nobody connects to you. The free plan can't be used commercially, so a paid plan is needed (third party guides list Starter around $6 a month; check the site).
+* **CapCut: put it together.** The Guide sprite, the text box, the voice, captions, and music.
+* **Labels:** TikTok and YouTube require AI labels on realistic AI content. Pixel art isn't realistic, but turn the AI label on anyway. It costs nothing, matches the FAQ, and YouTube says disclosing doesn't hurt reach.
+
+**Workflow for a Guide clip:** write the line, record it, run it through Voice Changer, drop the animated Guide sprite and text box over a game visual in CapCut, add captions, post with the AI label on.
 
 ## Why This Works
 * Faceless clips are normal for games. Indie Game Joe built a following on short gameplay clips with short text and has driven tens of thousands of Steam wishlists for indie games.
@@ -17,10 +26,10 @@ Goal: announce Jemfall, open the Discord, and get the first Day One members. The
 Faceless content needs something to show, and right now there's only art. So Phase 0 stays short: one teaser, a few Guide clips, open the Discord, then move fast into Phase 1. The moment you can step across a map, there's endless footage.
 
 ## AI Disclosure
-It's out of the hook now, but don't hide it. Put it in a Discord FAQ: "The code is written with AI help. The art is made by hand." Answer straight if anyone asks.
+Out in the open, not in the hook. The Discord FAQ says it, posts carry the platform AI label, and anyone who asks gets a straight answer.
 
 ## 1. Teaser Video (TikTok, Reels, Shorts)
-About 18 seconds. Pixel animation, chiptune or a trending sound, no voice.
+About 18 seconds. Cinematic shots from Kling, the Guide from PixelLab, the Guide's line voiced through ElevenLabs, chiptune or a trending sound.
 
 > **0:00** Dark sky. A pink purple spark. Text: *something fell from the sky*
 > **0:03** The Jem falls and slams into the grass. The ground cracks. A rift tears open.
@@ -105,7 +114,7 @@ Add #playtest and #bugs when Phase 1 has something playable. Empty channels make
 > **When can I play?** Not yet. The first playable version is next. Day One members hear first.
 > **Is it pay to win?** No. Jems buy cosmetics and convenience. They never buy power, XP, gear, or speed.
 > **Phone or PC?** Both. It runs in the browser.
-> **Is AI used?** The code is written with AI help. The art is made by hand.
+> **Is AI used?** Yes. AI tools help with the code, some of the art, the videos, and the Guide's voice.
 
 **First #announcements post**
 > Jemfall is official.
@@ -142,6 +151,13 @@ Reddit stays quiet in Phase 0. Nothing playable yet, so there's nothing real to 
 Phase 1 build: the solo prototype (one biome, click to step, one gathering skill, a bank, offline progress, the Guide). Step one is researching and picking the tech.
 
 ## Sources
+* PixelLab features: https://www.pixellab.ai/
+* Kling pixel art animation guide: https://kling.ai/topics/animate-pixel-art-ai
+* AI video comparison (Runway for consistent characters, Kling for value): https://mstudio.ai/insights/best-ai-video-generator-2026
+* ElevenLabs Voice Changer cost: https://help.elevenlabs.io/hc/en-us/articles/24938328105873-How-much-does-Voice-Changer-cost
+* ElevenLabs plan prices (third party): https://dev.to/techsifted/elevenlabs-pricing-2026-plans-credits-and-api-costs-explained-1549
+* TikTok AI label rules: https://support.tiktok.com/en/using-tiktok/creating-videos/ai-generated-content
+* YouTube AI labels: https://blog.youtube/news-and-events/improving-ai-labels-viewers-creators/
 * Faceless clips, text overlays, Indie Game Joe: https://80.lv/articles/the-secrets-to-viral-success-in-game-marketing-according-to-indie-game-joe
 * Short screen recording with text beats long edits: https://www.strayspark.studio/blog/devlog-marketing-build-wishlists
 * Text on screen and phone filmed gameplay is fine: https://www.gamedeveloper.com/business/tiktok-guide-for-indie-game-devs

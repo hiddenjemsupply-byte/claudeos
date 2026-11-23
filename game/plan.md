@@ -58,7 +58,7 @@ Inspired by Terraria, Stardew Valley, SimpleMMO, and old Pokemon. Look test imag
 * **The Jem color (locked, option B):** a custom bright pink purple that is not in the palette (#C837D6, with #8A1E8C shadow, #EE6BF0 light, #FFC6FB shine). It's the one color nothing else in the world uses, so a Jem always pops, on bright grass or in the darkest dimension.
 * **Grid:** 16x16 pixel tiles, scaled up on screen. Same base size as Stardew Valley, and the most common size for pixel art asset packs. Characters 16x32, like Stardew's NPCs.
 * **Where the art comes from:** start with a 16x16 fantasy asset pack that allows commercial use, recolored to the palette. Later, pay a pixel artist for original Jemfall art (classes, bosses, Jems, logo). Read and save every pack's license before using it.
-* **No AI generated art in the game.** In 2026, gamers are punishing it hard: boycotts, review bombs, and studios walking it back after backlash. Even honest devs get falsely accused. Jemfall's audience is exactly these players, so hand made art only, and show it being made in the videos.
+* **AI art is allowed (Iain's call).** Iain accepts the backlash risk. The Guide gets made with AI and is both an in game character and the social media mascot. Rules so it still looks like one game: every AI output gets cleaned to the 16x16 grid and recolored to Resurrect 64 before it goes in the game, and AI use is stated openly in the Discord FAQ and with platform AI labels.
 * design.md is the Field Xerox system for Iain's clothing brand. It does not apply to the game's art.
 
 ## Beginner Friendly (top priority)

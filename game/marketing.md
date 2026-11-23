@@ -8,7 +8,7 @@ Plugins: Iain sets these up himself
 Build a piece of the game, then market that piece. Every build phase ends with a marketing push before the next phase starts. Building is the content.
 
 ## The Angle
-Nothing personal. No face, no job, no family. The game is the star, and **the Guide is the face of Jemfall**: the in game Guide character talks to the audience through a pixel text box. Clips are pixel art, screen recordings, and on screen text. No AI voices.
+Nothing personal. No face, no job, no family. The game is the star, and **the Guide is the face of Jemfall**: the in game Guide character talks to the audience through a pixel text box. Clips are pixel art, screen recordings, AI video, and on screen text. The Guide's voice is Iain's own recording run through a voice changer. Tool stack: game/phase0-launch.md, section Tools.
 
 ## What Each Platform Does
 * **TikTok, YouTube Shorts, Instagram Reels:** discovery. 30 to 60 second vertical clips, edited for short form, not cut down from long videos. Practitioner reports say straight reposts of long videos do worse than clips made for short form.
