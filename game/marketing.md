@@ -29,6 +29,8 @@ Every post asks for one thing, not a stack.
 * Phase 4 on: **play Jemfall**
 
 ## Marketing Beat for Each Build Phase
+Phase 0 kit (script, captions, Discord setup, first two weeks): game/phase0-launch.md
+
 0. **Plan:** announce the project. "I'm building an MMO with zero coding experience." Reveal the name, the pitch, and the look. Open the Discord.
 1. **Solo prototype:** first clip of stepping across the map. Discord members become the first testers.
 2. **Core loop:** show crafting chains, the first fight, the first boss. Discord playtests.
